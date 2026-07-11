@@ -44,3 +44,19 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 ## Files
 - `app.py` – a simple web server that displays a configurable message.
 - `Dockerfile` – builds the image.
+
+# Docker Day 4 – Multi‑Container App with Docker Compose
+
+## What I learned
+- Writing a `docker-compose.yml` file with two services.
+- How services communicate using the service name as hostname.
+- `depends_on` to order container startup.
+- `environment` to pass configuration.
+- Using a pre‑built image (`redis:alpine`) alongside a custom one.
+- Basic Flask + Redis counter app.
+- Compose commands: `up`, `down`, `ps`, `logs`, `exec`.
+
+## Files
+- `app.py` – Flask app that increments a Redis counter.
+- `Dockerfile` – builds the web app image.
+- `docker-compose.yml` – defines the multi‑container setup.
