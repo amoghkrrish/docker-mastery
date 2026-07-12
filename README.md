@@ -60,3 +60,18 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 - `app.py` – Flask app that increments a Redis counter.
 - `Dockerfile` – builds the web app image.
 - `docker-compose.yml` – defines the multi‑container setup.
+
+# Docker Day 5 – Persistent Data & Health Checks
+
+## What I learned
+- Named volumes keep data across container removals.
+- `volumes:` in Compose to define and mount a named volume.
+- Redis data stored in a volume survives `docker-compose down`.
+- `HEALTHCHECK` in Dockerfile with `curl` to monitor app health.
+- Docker automatically restarts unhealthy containers (with restart policy).
+- Testing persistence by restarting containers.
+
+## Files
+- `app.py` – Flask app (unchanged).
+- `Dockerfile` – added `curl` and `HEALTHCHECK`.
+- `docker-compose.yml` – added `redis_data` volume.
