@@ -75,3 +75,19 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 - `app.py` – Flask app (unchanged).
 - `Dockerfile` – added `curl` and `HEALTHCHECK`.
 - `docker-compose.yml` – added `redis_data` volume.
+
+# Docker Day 6 – Multi‑Stage Builds with Python & Docker Hub
+
+## What I learned
+- How to use a multi‑stage Dockerfile to separate build and runtime environments.
+- Using `COPY --from=builder` to copy only the virtual environment and app code.
+- Reduced final image size by excluding build tools.
+- Published a Python Flask image to Docker Hub.
+
+## Files
+- `app.py` – a simple Flask web server.
+- `Dockerfile` – multi‑stage build (builder + final).
+- `requirements.txt` – only Flask (can be extended).
+
+## Docker Hub
+- Image: `amoghkrrish/python-multi-stage` (tags: v1, latest)
