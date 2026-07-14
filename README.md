@@ -91,3 +91,23 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 
 ## Docker Hub
 - Image: `amoghkrrish/python-multi-stage` (tags: v1, latest)
+
+# Docker Day 7 – Custom Networks, Isolation & Security Scanning
+
+## What I learned
+- Creating and using custom Docker networks to segment services.
+- How to place services on multiple networks (web on frontend + backend).
+- Isolating internal services (worker) by not exposing ports and using a private network.
+- Using `docker scout` to scan images for vulnerabilities.
+
+## Architecture
+- **web** – public, on frontend + backend.
+- **worker** – internal, only on backend.
+- **redis** – internal, only on backend.
+- **frontend** network – exposed to host.
+- **backend** network – private, no external access.
+
+## Files
+- `web_app.py`, `worker.py` – Python services.
+- `Dockerfile` – builds both services.
+- `docker-compose.yml` – defines the multi‑network setup.
