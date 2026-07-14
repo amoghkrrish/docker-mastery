@@ -1,0 +1,38 @@
+services:
+
+  web:
+    build: .
+    environment:
+      - APP=web_app.py
+      - REDIS_HOST=redis
+    ports:
+      - "9090:8080"
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - redis
+
+  worker:
+    build: .
+    environment:
+      - APP=worker.py
+      - REDIS_HOST=redis
+    networks:
+      - backend
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    networks:
+      - backend
+    volumes:
+      - redis_data:/data
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  redis_data:
