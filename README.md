@@ -111,3 +111,17 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 - `web_app.py`, `worker.py` – Python services.
 - `Dockerfile` – builds both services.
 - `docker-compose.yml` – defines the multi‑network setup.
+
+# Docker Day 8 – Resource Limits
+
+## What I learned
+- How to limit a container’s memory with the `--memory` flag.
+- What happens when a container tries to use more memory than allowed (OOM kill by the kernel, signal 9).
+- How to use the `stress` tool to test memory limits.
+- How to read and fix common flag syntax errors (`invalid suffix`).
+
+## Commands
+
+### Run within memory limit (success)
+```bash
+docker run --rm -it --name stress-test --memory=50m polinux/stress stress --vm 1 --vm-bytes 40M --timeout 10
