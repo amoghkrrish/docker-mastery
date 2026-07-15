@@ -125,3 +125,4 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 ### Run within memory limit (success)
 ```bash
 docker run --rm -it --name stress-test --memory=50m polinux/stress stress --vm 1 --vm-bytes 40M --timeout 10
+-DOCKER
