@@ -126,3 +126,27 @@ All code and notes for this day are in the `day1-hello-world/` folder.
 ```bash
 docker run --rm -it --name stress-test --memory=50m polinux/stress stress --vm 1 --vm-bytes 40M --timeout 10
 -DOCKER
+
+# Docker Day 9 – Production Compose
+
+## What I learned
+- Using `.env` files to manage environment variables in Docker Compose.
+- Setting resource limits (`deploy.resources.limits`) for containers.
+- Using Docker secrets to securely inject sensitive data (passwords, API keys).
+- Making a Flask app read secrets from the mounted secret file.
+- Proper `.gitignore` to avoid committing secrets.
+
+## Files
+- `app.py` – Flask web app that reads a secret and connects to Redis.
+- `Dockerfile` – builds the web image.
+- `requirements.txt` – Python dependencies.
+- `.env` – environment variables (not committed).
+- `my_secret.txt` – the secret (not committed).
+- `docker-compose.yml` – production‑style Compose file with limits and secrets.
+
+## Commands
+```bash
+docker-compose up -d         # start
+docker-compose ps            # check status
+docker-compose exec web cat /run/secrets/my_secret  # view secret
+docker-compose down          # stop and clean up
