@@ -1,0 +1,34 @@
+services:
+
+  web:
+    build: .
+    ports:
+      - "9090:8080"
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - SECRET_PATH=${SECRET_PATH}
+    secrets:
+      - my_secret
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 64M
+
+secrets:
+  my_secret:
+    file: ./my_secret.txt
