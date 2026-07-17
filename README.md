@@ -1,4 +1,4 @@
-# Docker Mastery – Learning Log
+## Docker Mastery – Learning Log ##########
 
 ## Day 1 – Foundations: Hello World & Nginx
 
