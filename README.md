@@ -150,3 +150,24 @@ docker-compose up -d         # start
 docker-compose ps            # check status
 docker-compose exec web cat /run/secrets/my_secret  # view secret
 docker-compose down          # stop and clean up
+
+# Docker Day 10 – Networking Deep‑Dive
+
+## What I learned
+- Default bridge vs user‑defined bridge: DNS resolution works only on user‑defined networks.
+- How to create a custom bridge network and communicate by container name.
+- The embedded DNS server at `127.0.0.11`.
+- Host network mode (shares the host’s network stack).
+- None network mode (complete isolation).
+- Overlay networks for multi‑host communication (Swarm).
+- How to connect a container to multiple networks.
+
+## Commands used
+
+### Custom bridge & DNS
+```bash
+docker network create --driver bridge my-net
+docker run -dit --name web --network my-net nginx:alpine
+docker run -dit --name client --network my-net alpine
+docker exec client ping web   # works
+docker network inspect my-net
